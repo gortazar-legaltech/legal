@@ -1,0 +1,4 @@
+Contact: mailto:gortazar-legaltech@atlantyde.eu
+Encryption: https://gortazar-legaltech.github.io/gortazar-legaltech/pgp-key.txt
+Preferred-Languages: es, en, pt, it
+Canonical: https://gortazar-legaltech.github.io/.well-known/security.txt
