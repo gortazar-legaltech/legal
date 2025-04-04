@@ -1,13 +1,11 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-const title = "Bienvenido a Gortázar Legal Advisors";
-
-export function get() {
-  return Astro.redirect('/es');
-}
+import MainLayout from '../../layouts/MainLayout.astro';
+const title = "Início - Gortázar Legal Advisors";
 ---
 
 <MainLayout title={title}>
-  <h1>{title}</h1>
-  <p>Este es el sitio oficial de Gortázar Legal Advisors. Pronto estará disponible con todos sus servicios legales especializados.</p>
+  <section class="p-8">
+    <h1>{title}</h1>
+    <p>Bem-vindo ao site oficial em português da Gortázar Legal Advisors.</p>
+  </section>
 </MainLayout>

@@ -1,9 +1,11 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+const title = "Home - Gortázar Legal Advisors";
 ---
-<MainLayout>
+
+<MainLayout title={title}>
   <section class="p-8">
-    <h1>Index (en)</h1>
-    <p>Contenido de la página index en en.</p>
+    <h1>{title}</h1>
+    <p>Welcome to the official English website of Gortázar Legal Advisors.</p>
   </section>
 </MainLayout>
