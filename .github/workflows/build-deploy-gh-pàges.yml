@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # o la rama principal que uses
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -15,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '23'
 
       - name: Install dependencies
         run: npm install
