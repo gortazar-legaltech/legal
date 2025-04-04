@@ -5,37 +5,38 @@ export interface Props {
 }
 // Aquí definimos un valor por defecto seguro y claro
 const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
+
 ---
 
 <!DOCTYPE html>
 <html lang="es" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <link rel="stylesheet" href={Astro.url('/styles/global.css')} />
-    <link rel="icon" type="image/svg+xml" href={Astro.url('/assets/favicon.svg')} />
-  </head>
-  <body class="font-sans text-base bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-    <header class="p-4 bg-atlante-oscuro text-white">
-      <nav class="flex justify-between items-center">
-        <img src={Astro.url('/assets/logo.svg')} alt="Logo GORTÁZAR" class="h-10" />
-        <ul class="flex gap-4">
-          <li><a href={Astro.url('/es/')}>Inicio</a></li>
-          <li><a href={Astro.url('/es/nosotros')}>Nosotros</a></li>
-          <li><a href={Astro.url('/es/servicios')}>Servicios</a></li>
-          <li><a href={Astro.url('/es/contacto')}>Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="p-6">
-      <slot />
-    </main>
-    <footer class="p-4 bg-atlante-oscuro text-white text-sm text-center">
-      <p>© {new Date().getFullYear()} GORTAZAR LEGAL ADVISORS</p>
-      <a href={Astro.url('/es/privacidad')} class="underline">Política de Privacidad</a>
-    </footer>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/global.css`} />
+  <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}assets/favicon.svg`} />
+</head>
+<body class="font-sans text-base bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+  <header class="p-4 bg-atlante-oscuro text-white">
+    <nav class="flex justify-between items-center">
+      <img src={`${import.meta.env.BASE_URL}assets/logo.svg`} alt="Logo GORTÁZAR" class="h-10" />
+      <ul class="flex gap-4">
+        <li><a href={`${import.meta.env.BASE_URL}es/`}>Inicio</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}es/nosotros`}>Nosotros</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}es/servicios`}>Servicios</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}es/contacto`}>Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="p-6">
+    <slot />
+  </main>
+  <footer class="p-4 bg-atlante-oscuro text-white text-sm text-center">
+    <p>© {new Date().getFullYear()} GORTAZAR LEGAL ADVISORS</p>
+    <a href={`${import.meta.env.BASE_URL}es/privacidad`} class="underline">Política de Privacidad</a>
+  </footer>
+</body>
 </html>
 
 
