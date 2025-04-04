@@ -5,6 +5,7 @@ echo "🧱 Validación de Layouts - GORTÁZAR LegalTech"
 echo "==============================================="
 # Directorio base
 BASE_DIR="$(dirname "$0")/.."
+
 LAYOUTS_DIR="src/layouts"
 PAGES_DIR="src/pages"
 FAILED=0

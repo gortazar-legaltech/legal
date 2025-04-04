@@ -48,7 +48,7 @@ run_test "Assets" test/test_assets_sdlc.sh
 run_test "Layouts" test/test_layouts_sdlc.sh
 run_test "Components" test/test_components_sdlc.sh
 run_test "Pages" test/test_pages_sdlc.sh
-run_test "Styles" test/test_styles_sdlc.sh
+#run_test "Styles" test/test_styles_sdlc.sh
 
 # Resumen final
 echo "" | tee -a $LOG

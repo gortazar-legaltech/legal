@@ -49,6 +49,8 @@ Para ejecutar el entorno local:
 npm run dev
 ```
 
+Visita: "http://localhost:4321/legal"
+=======
 Acceso local disponible en: [http://localhost:4321/legal](http://localhost:4321/legal)
 
 ---
@@ -105,7 +107,6 @@ Para contribuir, realizar un fork del proyecto, generar cambios en una rama sepa
 - [Documentación Astro](https://astro.build/docs)
 - [Guía de TailwindCSS](https://tailwindcss.com/docs)
 
----
 
 Para más información sobre configuraciones avanzadas y detalles técnicos adicionales, revisar los archivos específicos y scripts dentro del directorio `/test`.
 

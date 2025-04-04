@@ -35,3 +35,4 @@ jobs:
     #        npx playwright install --with-deps
     #        npx playwright test || echo 'Tests E2E no críticos, continuar...'
     #      fi
+
