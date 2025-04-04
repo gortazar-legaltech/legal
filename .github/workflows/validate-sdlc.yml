@@ -23,8 +23,8 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
-      - name: Validar estructura mínima de páginas
-        run: node test/validate-pages.js
+      - name: Run SDLC Validator
+        run: ./run_sdlc_suite.sh
 
       - name: Ejecutar tests Playwright (si existen)
         run: |
@@ -32,6 +32,3 @@ jobs:
             npx playwright install --with-deps
             npx playwright test || echo 'Tests E2E no críticos, continuar...'
           fi
-
-      - name: Validar contratos de assets
-        run: bash ./test_assets_contract.sh
