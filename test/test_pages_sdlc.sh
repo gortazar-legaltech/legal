@@ -4,6 +4,8 @@ set -e
 echo "📄 Validación de Páginas - GORTÁZAR LegalTech"
 echo "============================================="
 
+# Directorio base
+BASE_DIR="$(dirname "$0")/.."
 PAGES_DIR="src/pages"
 FAILED=0
 

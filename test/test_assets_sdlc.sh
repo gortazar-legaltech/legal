@@ -2,7 +2,8 @@
 set -e
 
 echo "🔍 Validando contratos de assets (estilo CI/CD SDLC)..."
-
+# Directorio base
+BASE_DIR="$(dirname "$0")/.."
 ASSETS_DIR="src/assets"
 REQUIRED=("logo.svg" "firma.svg" "favicon.svg" "favicon.ico")
 MIN_WIDTH=200
