@@ -1,5 +1,9 @@
 #!/bin/bash
-set -e
+set -o pipefail  # ⚠️ Mejor que set -e para no cortar flujo por errores menores
+
+BASE_DIR="$(dirname "$0")/.."
+LAYOUT_FILE="$BASE_DIR/src/layouts/Layout.astro"
+STYLE_FILE="import '../styles/global.css';"
 
 echo "🎨 Validación de Estilos - GORTÁZAR LegalTech"
 echo "============================================="

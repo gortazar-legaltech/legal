@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -o pipefail  # ⚠️ Mejor que set -e para no cortar flujo por errores menores
 
 echo "🔍 Validando contratos de assets (estilo CI/CD SDLC)..."
 # Directorio base

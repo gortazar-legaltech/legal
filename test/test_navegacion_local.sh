@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -o pipefail  # ⚠️ Mejor que set -e para no cortar flujo por errores menores
 
 echo "🧪 Test funcional de navegación para GORTÁZAR LegalTech"
 echo "---------------------------------------------------------"
