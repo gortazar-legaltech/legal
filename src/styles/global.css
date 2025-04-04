@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos personalizados y animaciones sutiles */
-body {
-  font-family: 'Georgia', serif;
+/* Estilos corporativos */
+.bg-atlante-oscuro {
+  background-color: #001c3d;
 }
-
-
-
+.text-dorado-tenue {
+  color: #d4af37;
+}
+.font-sans {
+  font-family: system-ui, sans-serif;
+}

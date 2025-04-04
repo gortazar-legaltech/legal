@@ -1,22 +1,22 @@
+// src/layouts/BaseLayout.astro
+const { title = 'GORTÁZAR LegalTech' } = Astro.props;
 ---
-const { title } = Astro.props;
----
-<!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <link rel="stylesheet" href="/styles/global.css" />
   </head>
-  <body style="margin: 0; font-family: system-ui, sans-serif;">
-    <header style="padding: 1rem; background: #001c3d; color: white;">
-      <h2>GORTÁZAR Legal Advisors</h2>
+  <body class="m-0 font-sans">
+    <header class="p-4 bg-atlante-oscuro text-white">
+      <h1 class="text-xl">GORTÁZAR LegalTech</h1>
     </header>
-    <main style="padding: 1rem;">
+    <main class="p-4">
       <slot />
     </main>
-    <footer style="padding: 1rem; background: #001c3d; color: white; font-size: 0.8rem;">
-      <p>© 2025 GORTAZAR Legal Advisors – Cumpliendo con GDPR y normativas europeas</p>
+    <footer class="p-4 bg-atlante-oscuro text-white text-sm">
+      <p>© {new Date().getFullYear()} GORTÁZAR LegalTech. Todos los derechos reservados.</p>
     </footer>
   </body>
 </html>

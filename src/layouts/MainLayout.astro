@@ -1,41 +1,33 @@
 ---
-const { title = 'Buffete Legal' } = Astro.props;
+// src/layouts/MainLayout.astro
+const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
 ---
-<!DOCTYPE html>
 <html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <!-- Favicon -->
-    <link rel="icon" href="/src/assets/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
-    <!-- Estilos -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   </head>
-  <body class="bg-gray-50 text-slate-900 dark:bg-slate-900 dark:text-white">
-    <header class="p-4 bg-atlante-oscuro text-dorado-tenue">
-      <div class="container mx-auto flex items-center justify-between">
-        <!-- Logo con fallback -->
-        <div class="logo">
-          <img src="/src/assets/logo.svg" alt="Buffete Legal" class="h-10" onerror="this.style.display='none';" />
-        </div>
-        <nav>
-          <ul class="flex space-x-4">
-            <li><a href="/es/" class="hover:underline">Inicio</a></li>
-            <li><a href="/es/nosotros" class="hover:underline">Nosotros</a></li>
-            <li><a href="/es/servicios" class="hover:underline">Servicios</a></li>
-            <li><a href="/es/contacto" class="hover:underline">Contacto</a></li>
-          </ul>
-        </nav>
-      </div>
+  <body class="font-sans text-base bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+    <header class="p-4 bg-atlante-oscuro text-white">
+      <nav class="flex justify-between items-center">
+        <img src="/assets/logo.svg" alt="Logo GORTÁZAR" class="h-10" />
+        <ul class="flex gap-4">
+          <li><a href="/es/">Inicio</a></li>
+          <li><a href="/es/nosotros">Nosotros</a></li>
+          <li><a href="/es/servicios">Servicios</a></li>
+          <li><a href="/es/contacto">Contacto</a></li>
+        </ul>
+      </nav>
     </header>
-    <main class="container mx-auto py-8">
+    <main class="p-6">
       <slot />
     </main>
-    <footer class="p-4 bg-atlante-oscuro text-center text-dorado-tenue">
-      <p>&copy; {new Date().getFullYear()} Buffete Legal. Todos los derechos reservados.</p>
-      <p><a href="/es/privacidad" class="hover:underline">Política de Privacidad y RGPD</a></p>
+    <footer class="p-4 bg-atlante-oscuro text-white text-sm text-center">
+      <p>© {new Date().getFullYear()} GORTAZAR LEGAL ADVISORS</p>
+      <a href="/es/privacidad" class="underline">Política de Privacidad</a>
     </footer>
   </body>
 </html>
