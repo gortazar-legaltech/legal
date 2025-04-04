@@ -1,0 +1,118 @@
+🔍 Iniciando SDLC Suite para GORTÁZAR LegalTech
+Fecha: vie 04 abr 2025 18:13:13 CEST
+==============================================
+
+🧪 Test: Assets
+----------------------------------
+🔍 Validando contratos de assets (estilo CI/CD SDLC)...
+✅ Presente: logo.svg
+✅ Presente: firma.svg
+✅ Presente: favicon.svg
+✅ Presente: favicon.ico
+✅ logo.svg tiene ancho SVG suficiente: 200
+✅ firma.svg tiene ancho SVG suficiente: 200
+🧼 Buscando assets fuera de src/assets/...
+✅ Todos los assets están dentro de src/assets/
+✅ Validación de contrato de assets COMPLETADA CON ÉXITO.
+
+🧪 Test: Layouts
+----------------------------------
+❌ Error al ejecutar test_layouts_sdlc.sh
+🧱 Validación de Layouts - GORTÁZAR LegalTech
+===============================================
+✅ MainLayout.astro existe
+✅ Todos los layouts contienen <slot />
+🔍 Verificando páginas que NO usan layouts:
+❌ Las siguientes páginas no usan MainLayout:
+  - src/pages/index.astro
+❌ Validación de Layouts con 1 errores
+
+🧪 Test: Components
+----------------------------------
+🧩 Validación de Componentes - GORTÁZAR LegalTech
+=================================================
+✅ Carpeta src/components encontrada
+✅ Todos los componentes tienen extensión válida (.astro/.jsx/.tsx)
+🔎 Buscando componentes sin uso...
+⚠️ Componentes no usados detectados:
+  - LanguageSwitcher
+  - Welcome
+🧬 Verificando <slot /> en componentes contenedores...
+✅ Validación de componentes completada con éxito
+
+🧪 Test: Pages
+----------------------------------
+❌ Error al ejecutar test_pages_sdlc.sh
+📄 Validación de Páginas - GORTÁZAR LegalTech
+=============================================
+✅ Se encontraron 25 páginas .astro
+⚠️ Archivos inválidos encontrados:
+src/pages/.well-known/_security.txt
+🔍 Validando contenido básico de las páginas...
+❌ src/pages/index.astro no contiene <h1> ni <title> (falta contenido visible)
+🧱 Verificando que cada página use MainLayout...
+⚠️ src/pages/index.astro no importa MainLayout (posible inconsistencia visual)
+💬 Verificando que las páginas no estén vacías...
+❌ src/pages/index.astro está vacía (sin HTML visible)
+❌ Validación de páginas encontró 4 problemas
+
+🧪 Test: Styles
+----------------------------------
+❌ Error al ejecutar test_styles_sdlc.sh
+🎨 Validación de Estilos - GORTÁZAR LegalTech
+=============================================
+✅ Directorio src/styles encontrado
+✅ global.css está presente
+✅ Tailwind CSS está configurado en global.css
+🔍 Verificando importaciones de estilos en layouts/páginas...
+⚠️ Falta import de global.css en: src/layouts/BaseLayout.astro
+⚠️ Falta import de global.css en: src/layouts/Layout.astro
+⚠️ Falta import de global.css en: src/pages/it/404.astro
+⚠️ Falta import de global.css en: src/pages/it/contacto.astro
+⚠️ Falta import de global.css en: src/pages/it/index.astro
+⚠️ Falta import de global.css en: src/pages/it/privacidad.astro
+⚠️ Falta import de global.css en: src/pages/it/nosotros.astro
+⚠️ Falta import de global.css en: src/pages/it/servicios.astro
+⚠️ Falta import de global.css en: src/pages/pt/404.astro
+⚠️ Falta import de global.css en: src/pages/pt/contacto.astro
+⚠️ Falta import de global.css en: src/pages/pt/index.astro
+⚠️ Falta import de global.css en: src/pages/pt/privacidad.astro
+⚠️ Falta import de global.css en: src/pages/pt/nosotros.astro
+⚠️ Falta import de global.css en: src/pages/pt/servicios.astro
+⚠️ Falta import de global.css en: src/pages/es/404.astro
+⚠️ Falta import de global.css en: src/pages/es/contacto.astro
+⚠️ Falta import de global.css en: src/pages/es/index.astro
+⚠️ Falta import de global.css en: src/pages/es/privacidad.astro
+⚠️ Falta import de global.css en: src/pages/es/nosotros.astro
+⚠️ Falta import de global.css en: src/pages/es/servicios.astro
+⚠️ Falta import de global.css en: src/pages/index.astro
+⚠️ Falta import de global.css en: src/pages/en/404.astro
+⚠️ Falta import de global.css en: src/pages/en/contacto.astro
+⚠️ Falta import de global.css en: src/pages/en/index.astro
+⚠️ Falta import de global.css en: src/pages/en/privacidad.astro
+⚠️ Falta import de global.css en: src/pages/en/nosotros.astro
+⚠️ Falta import de global.css en: src/pages/en/servicios.astro
+⚠️ En 27 archivos no se importa global.css
+🚫 Buscando estilos inline prohibidos...
+❌ Estilos inline encontrados:
+src/layouts/BaseLayout.astro:  <body style="margin: 0; font-family: system-ui, sans-serif;">
+src/layouts/BaseLayout.astro:    <header style="padding: 1rem; background: #001c3d; color: white;">
+src/layouts/BaseLayout.astro:    <main style="padding: 1rem;">
+src/layouts/BaseLayout.astro:    <footer style="padding: 1rem; background: #001c3d; color: white; font-size: 0.8rem;">
+🔍 No se detectó branding.css (puede no aplicar para este cliente)
+❌ Validación de estilos encontró 1 problema(s)
+
+🧾 Resumen SDLC Final
+----------------------
+🔸 Assets: 0 error(es)
+🔸 Layouts: 2 error(es)
+🔸 Styles: 2 error(es)
+🔸 Pages: 3 error(es)
+🔸 Components: 0 error(es)
+✅ Total de errores detectados: 7
+
+💡 Recomendaciones para el developer (IA Hints)
+- Verifica que todos los layouts estén conectados con <slot /> y sean usados
+- Asegura estructura semántica, import de layout y accesibilidad (<h1>)
+- Centraliza estilos en global.css y evita inline style
+- Todos los errores están listos para revisión y mejora guiada.

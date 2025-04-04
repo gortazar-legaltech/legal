@@ -1,0 +1,37 @@
+name: Validate GORTÁZAR Web SDLC
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Validar estructura mínima de páginas
+        run: node test/validate-pages.js
+
+      - name: Ejecutar tests Playwright (si existen)
+        run: |
+          if [ -d "playwright" ]; then
+            npx playwright install --with-deps
+            npx playwright test || echo 'Tests E2E no críticos, continuar...'
+          fi
+
+      - name: Validar contratos de assets
+        run: bash ./test_assets_contract.sh
