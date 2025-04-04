@@ -7,6 +7,10 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.0.0"
+    "@astrojs/sitemap": "^3.3.0",
+    "astro": "^5.6.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
