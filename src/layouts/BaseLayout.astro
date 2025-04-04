@@ -1,8 +1,9 @@
 // src/layouts/BaseLayout.astro
 ---
+import '../styles/global.css';
 import Layout from '../../layouts/Layout.astro';
 ---
-const { title = 'GORTÁZAR LegalTech' } = Astro.props;
+const { title = 'GORTÁZAR LEGAL ADVISORS' } = Astro.props;
 ---
 <html lang="es" class="dark">
   <head>
@@ -13,13 +14,14 @@ const { title = 'GORTÁZAR LegalTech' } = Astro.props;
   </head>
   <body class="m-0 font-sans">
     <header class="p-4 bg-atlante-oscuro text-white">
-      <h1 class="text-xl">GORTÁZAR LegalTech</h1>
+      <h1 class="text-xl">GORTÁZAR LEGAL ADVISORS</h1>
     </header>
     <main class="p-4">
       <slot />
     </main>
     <footer class="p-4 bg-atlante-oscuro text-white text-sm">
-      <p>© {new Date().getFullYear()} GORTÁZAR LegalTech. Todos los derechos reservados.</p>
+      <p>© {new Date().getFullYear()} GORTÁZAR LEGAL ADVISORS. Todos los derechos reservados.</p>
     </footer>
   </body>
 </html>
+---

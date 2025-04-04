@@ -1,9 +1,8 @@
 ---
 // Importación correcta (ajusta si realmente necesitas 'Layout.astro')
 export interface Props {
-  title?: string;  // Ahora es opcional
+  title?: string;
 }
-
 // Aquí definimos un valor por defecto seguro y claro
 const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
 ---
@@ -14,18 +13,18 @@ const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="stylesheet" href={Astro.url('/styles/global.css')} />
+    <link rel="icon" type="image/svg+xml" href={Astro.url('/assets/favicon.svg')} />
   </head>
   <body class="font-sans text-base bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
     <header class="p-4 bg-atlante-oscuro text-white">
       <nav class="flex justify-between items-center">
-        <img src="/assets/logo.svg" alt="Logo GORTÁZAR" class="h-10" />
+        <img src={Astro.url('/assets/logo.svg')} alt="Logo GORTÁZAR" class="h-10" />
         <ul class="flex gap-4">
-          <li><a href="/es/">Inicio</a></li>
-          <li><a href="/es/nosotros">Nosotros</a></li>
-          <li><a href="/es/servicios">Servicios</a></li>
-          <li><a href="/es/contacto">Contacto</a></li>
+          <li><a href={Astro.url('/es/')}>Inicio</a></li>
+          <li><a href={Astro.url('/es/nosotros')}>Nosotros</a></li>
+          <li><a href={Astro.url('/es/servicios')}>Servicios</a></li>
+          <li><a href={Astro.url('/es/contacto')}>Contacto</a></li>
         </ul>
       </nav>
     </header>
@@ -34,8 +33,11 @@ const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
     </main>
     <footer class="p-4 bg-atlante-oscuro text-white text-sm text-center">
       <p>© {new Date().getFullYear()} GORTAZAR LEGAL ADVISORS</p>
-      <a href="/es/privacidad" class="underline">Política de Privacidad</a>
+      <a href={Astro.url('/es/privacidad')} class="underline">Política de Privacidad</a>
     </footer>
   </body>
 </html>
+
+
+
 
