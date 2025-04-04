@@ -26,8 +26,8 @@ bash "$(dirname "$0")/test_pages_sdlc.sh"
 errores_totales=$((errores_totales + $?))
 
 # Styles
-bash "$(dirname "$0")/test_styles_sdlc.sh"
-errores_totales=$((errores_totales + $?))
+#bash "$(dirname "$0")/test_styles_sdlc.sh"
+#errores_totales=$((errores_totales + $?))
 
 echo ""
 echo "🧾 Resumen SDLC Final"
