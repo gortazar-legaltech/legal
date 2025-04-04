@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o pipefail  # ⚠️ Mejor que set -e para no cortar flujo por errores menores
 
-SCRIPT_DIR="$(cd .." && pwd)"
+SCRIPT_DIR="$(cd "/src")" && pwd)"
 cd "$SCRIPT_DIR"
 
 LOG="sdlc_full_log.txt"
