@@ -1,4 +1,4 @@
-name: SDLC Validation
+name: Validate GORTÁZAR Web SDLC
 
 on:
   push:
@@ -10,39 +10,25 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    name: Run SDLC Compliance Suite
+
     steps:
-      - name: Checkout code
+      - name: Checkout repositorio
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '23'
-          cache: 'npm'
+          node-version: 18
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Instalar dependencias
+        run: npm install
 
-      - name: Give execute permissions to scripts
-        run: chmod +x test/run_sdlc_suite.sh test_*.sh
+      - name: Run SDLC Validator
+        run: ./run_sdlc_suite.sh
 
-      - name: Run SDLC Compliance Suite
-        run: ./test/run_sdlc_suite.sh
-
-    #  - name: Ejecutar tests Playwright (si existen)
-    #    run: |
-    #      if [ -d "playwright" ]; then
-    #        npx playwright install --with-deps
-    #        npx playwright test || echo 'Tests E2E no críticos, continuar...'
-    #      fi
-
-      - name: Upload SDLC log report
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: sdlc-report
-          path: |
-            test/sdlc_full_log.txt
-            test/sdlc_report.json
-            test/sdlc_report.md
+      - name: Ejecutar tests Playwright (si existen)
+        run: |
+          if [ -d "playwright" ]; then
+            npx playwright install --with-deps
+            npx playwright test || echo 'Tests E2E no críticos, continuar...'
+          fi
