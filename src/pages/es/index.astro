@@ -1,7 +1,11 @@
 ---
-title: "Inicio - Gortázar Legal Advisors"
-layout: "../../layouts/BaseLayout.astro"
+import MainLayout from '../../layouts/MainLayout.astro';
+const title = 'Inicio - Buffete Legal';
 ---
-
-<h1>Bienvenidos a GORTAZAR Legal Advisors</h1>
-<p>Navegando la justicia con sabiduría ancestral.</p>
+<MainLayout title={title}>
+  <section class="hero">
+    <h1>Bienvenidos a Buffete Legal</h1>
+    <p>Soluciones jurídicas con sabiduría ancestral y visión de futuro.</p>
+    <!-- Aquí puedes agregar tu CTA, imágenes y demás elementos visuales -->
+  </section>
+</MainLayout>

@@ -1,0 +1,21 @@
+---
+const languages = [
+  { code: 'es', name: 'Español' },
+  { code: 'en', name: 'English' },
+  { code: 'pt', name: 'Português' },
+  { code: 'it', name: 'Italiano' },
+];
+// Lógica simplificada: define el idioma actual. Adapta esta lógica según tus necesidades.
+const currentLang = 'es';
+---
+<nav>
+  <ul class="flex space-x-4">
+    {languages.map(lang => (
+      <li>
+        <a href={\`/\${lang.code}/\`} class={lang.code === currentLang ? 'font-bold' : ''}>
+          {lang.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
