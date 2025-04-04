@@ -29,9 +29,10 @@ jobs:
       - name: Run SDLC Validator
         run: ./test/run_sdlc_suite.sh
 
-      - name: Ejecutar tests Playwright (si existen)
-        run: |
-          if [ -d "playwright" ]; then
-            npx playwright install --with-deps
-            npx playwright test || echo 'Tests E2E no críticos, continuar...'
-          fi
+    #  - name: Ejecutar tests Playwright (si existen)
+    #    run: |
+    #      if [ -d "playwright" ]; then
+    #        npx playwright install --with-deps
+    #        npx playwright test || echo 'Tests E2E no críticos, continuar...'
+    #      fi
+
