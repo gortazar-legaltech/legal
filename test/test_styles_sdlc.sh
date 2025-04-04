@@ -4,6 +4,8 @@ set -e
 echo "🎨 Validación de Estilos - GORTÁZAR LegalTech"
 echo "============================================="
 
+# Directorio base
+BASE_DIR="$(dirname "$0")/.."
 STYLES_DIR="src/styles"
 GLOBAL_CSS="$STYLES_DIR/global.css"
 FAILED=0

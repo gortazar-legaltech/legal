@@ -3,7 +3,8 @@ set -e
 
 echo "🧩 Validación de Componentes - GORTÁZAR LegalTech"
 echo "================================================="
-
+# Directorio base
+BASE_DIR="$(dirname "$0")/.."
 COMPONENTS_DIR="src/components"
 LAYOUTS_DIR="src/layouts"
 PAGES_DIR="src/pages"

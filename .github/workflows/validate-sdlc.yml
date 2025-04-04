@@ -23,6 +23,9 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
+      - name: Give permissions to scripts
+        run: chmod +x ./test/run_sdlc_suite.sh ./test/test_*.sh
+
       - name: Run SDLC Validator
         run: ./test/run_sdlc_suite.sh
 

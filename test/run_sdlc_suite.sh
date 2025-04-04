@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o pipefail  # ⚠️ Mejor que set -e para no cortar flujo por errores menores
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(BASE_DIR="$(dirname "$0")/..")" && pwd)"
 cd "$SCRIPT_DIR"
 
 LOG="sdlc_full_log.txt"
@@ -44,11 +44,11 @@ run_test() {
 }
 
 # Ejecutar tests
-run_test "Assets" test_assets_sdlc.sh
-run_test "Layouts" test_layouts_sdlc.sh
-run_test "Components" test_components_sdlc.sh
-run_test "Pages" test_pages_sdlc.sh
-run_test "Styles" test_styles_sdlc.sh
+run_test "Assets" test/test_assets_sdlc.sh
+run_test "Layouts" test/test_layouts_sdlc.sh
+run_test "Components" test/test_components_sdlc.sh
+run_test "Pages" test/test_pages_sdlc.sh
+run_test "Styles" test/test_styles_sdlc.sh
 
 # Resumen final
 echo "" | tee -a $LOG
