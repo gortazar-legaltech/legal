@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 /* Estilos personalizados y animaciones sutiles */
+body {
+  font-family: 'Georgia', serif;
+}
+
+
+
