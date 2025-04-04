@@ -22,10 +22,10 @@ const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
     <nav class="flex justify-between items-center">
       <img src={`${import.meta.env.BASE_URL}assets/logo.svg`} alt="Logo GORTÁZAR" class="h-10" />
       <ul class="flex gap-4">
-        <li><a href={`${import.meta.env.BASE_URL}es/`}>Inicio</a></li>
-        <li><a href={`${import.meta.env.BASE_URL}es/nosotros`}>Nosotros</a></li>
-        <li><a href={`${import.meta.env.BASE_URL}es/servicios`}>Servicios</a></li>
-        <li><a href={`${import.meta.env.BASE_URL}es/contacto`}>Contacto</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}/es/`}>Inicio</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}/es/nosotros`}>Nosotros</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}/es/servicios`}>Servicios</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}/es/contacto`}>Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -34,7 +34,7 @@ const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
   </main>
   <footer class="p-4 bg-atlante-oscuro text-white text-sm text-center">
     <p>© {new Date().getFullYear()} GORTAZAR LEGAL ADVISORS</p>
-    <a href={`${import.meta.env.BASE_URL}es/privacidad`} class="underline">Política de Privacidad</a>
+    <a href={`${import.meta.env.BASE_URL}/es/privacidad`} class="underline">Política de Privacidad</a>
   </footer>
 </body>
 </html>
