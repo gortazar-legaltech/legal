@@ -1,0 +1,2 @@
+# legal
+GORTAZAR Landing Pages
