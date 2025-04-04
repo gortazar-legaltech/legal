@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Run SDLC Validator
-        run: ./run_sdlc_suite.sh
+        run: ./test/run_sdlc_suite.sh
 
       - name: Ejecutar tests Playwright (si existen)
         run: |
