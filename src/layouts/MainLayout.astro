@@ -1,12 +1,9 @@
 ---
-// src/layouts/MainLayout.astro
-
----
-import Layout from '../../layouts/Layout.astro';
----
+// Importación correcta (ajusta si realmente necesitas 'Layout.astro')
 export interface Props {
   title?: string;  // Ahora es opcional
 }
+
 // Aquí definimos un valor por defecto seguro y claro
 const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
 ---
@@ -41,3 +38,4 @@ const { title = 'GORTAZAR LEGAL ADVISORS' } = Astro.props;
     </footer>
   </body>
 </html>
+
