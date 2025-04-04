@@ -4,5 +4,5 @@ export default defineConfig({
   site: 'https://gortazar-legaltech.github.io/legal/',
   integrations: [sitemap()],
   outDir: './dist',
-  base: '/legal/',
+  base: '',
 });
