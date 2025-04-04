@@ -1,12 +1,8 @@
 ---
 // src/pages/index.astro
 import MainLayout from '../layouts/MainLayout.astro';
-
+---
+<MainLayout>
 export function get() {
   return Astro.redirect('/es');
-}
----
-
-<MainLayout title="Redirigiendo...">
-  <h1 class="text-lg font-semibold text-center mt-8">Redirigiendo al contenido en Español...</h1>
 </MainLayout>
