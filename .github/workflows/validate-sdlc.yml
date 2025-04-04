@@ -1,8 +1,11 @@
 name: SDLC Validation
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -10,12 +13,12 @@ jobs:
     name: Run SDLC Compliance Suite
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '23'
           cache: 'npm'
 
       - name: Install dependencies
@@ -26,6 +29,13 @@ jobs:
 
       - name: Run SDLC Compliance Suite
         run: ./test/run_sdlc_suite.sh
+
+    #  - name: Ejecutar tests Playwright (si existen)
+    #    run: |
+    #      if [ -d "playwright" ]; then
+    #        npx playwright install --with-deps
+    #        npx playwright test || echo 'Tests E2E no críticos, continuar...'
+    #      fi
 
       - name: Upload SDLC log report
         if: always()
