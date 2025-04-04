@@ -25,7 +25,7 @@ npm install
 npm run dev
 ```
 
-Visita: http://localhost:4321/legal
+Visita: "http://localhost:4321/legal"
 
 ---
 
