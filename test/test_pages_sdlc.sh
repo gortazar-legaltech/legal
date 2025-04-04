@@ -62,8 +62,6 @@ echo "============================================="
 # fi
 
 
-#!/bin/bash
-
 BASE_DIR="$(dirname "$0")/.."
 PAGES_DIR="$BASE_DIR/src/pages"
 errores=0
@@ -75,6 +73,14 @@ num_pages=$(find "$PAGES_DIR" -name '*.astro' | wc -l)
 echo "✅ Se encontraron $num_pages páginas .astro"
 
 for pagina in $(find "$PAGES_DIR" -name '*.astro'); do
+  # Excepción para página raíz con redirección
+  if [[ "$pagina" == */pages/index.astro ]]; then
+    if grep -q "Astro.redirect" "$pagina"; then
+      echo "✅ Página raíz con redirección detectada y válida: ${pagina#$BASE_DIR/}"
+      continue
+    fi
+  fi
+
   contenido=$(grep -E '<h1>|<title>' "$pagina")
   html_visible=$(grep -E "<[a-z]+.*>.*<\/[a-z]+>" "$pagina")
 
@@ -96,3 +102,4 @@ else
 fi
 
 exit $errores
+
