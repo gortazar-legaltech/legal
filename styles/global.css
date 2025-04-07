@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos corporativos */
+.bg-atlante-oscuro {
+  background-color: #001c3d;
+}
+.text-dorado-tenue {
+  color: #d4af37;
+}
+.font-sans {
+  font-family: system-ui, sans-serif;
+}
