@@ -8,31 +8,46 @@ on:
   workflow_dispatch:
 
 jobs:
-  validate:
+  sitemap-check:
+    name: 🔍 Validación de Sitemap
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repositorio
+      - name: 🧾 Clonar repositorio
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: Instalar dependencias
-        run: npm install
+      - name: 🧱 Instalar dependencias
+        run: |
+          npm install
+
+      - name: 🏗️ Build del sitio Astro
+        run: |
+          npm run build
+
+      - name: 🚀 Servir sitio localmente
+        run: |
+          npx serve dist --listen 4321 &
+          sleep 3 # Espera para levantar el servidor
+
 
       - name: Give permissions to scripts
         run: chmod +x ./test/run_sdlc_suite.sh ./test/test_*.sh
 
+      - name: 🔍 Ejecutar validador de sitemap
+        run: |
+          bash ./test/test_sitemap.sh
+
       - name: Run SDLC Validator
         run: ./test/run_sdlc_suite.sh
 
-    #  - name: Ejecutar tests Playwright (si existen)
-    #    run: |
-    #      if [ -d "playwright" ]; then
-    #        npx playwright install --with-deps
-    #        npx playwright test || echo 'Tests E2E no críticos, continuar...'
-    #      fi
 
+        #  - name: Ejecutar tests Playwright (si existen)
+        #    run: |
+        #      if [ -d "playwright" ]; then
+        #        npx playwright install --with-deps
+        #        npx playwright test || echo 'Tests E2E no críticos, continuar...'
