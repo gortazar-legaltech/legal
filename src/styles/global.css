@@ -12,3 +12,14 @@
 .font-sans {
   font-family: system-ui, sans-serif;
 }
+:root {
+  --color-atlante-oscuro: #0a2342;
+  --color-dorado-tenue: #d4af37;
+  --color-gris-piedra: #b0b0b0;
+}
+
+.dark {
+  --color-atlante-oscuro: #1a2b4c; /* Tonalidad más clara para modo oscuro */
+  --color-dorado-tenue: #e5c14a;
+  --color-gris-piedra: #c0c0c0;
+}
