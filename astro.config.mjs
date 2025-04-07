@@ -1,60 +1,106 @@
+// import { defineConfig } from 'astro/config';
+// import sitemap from '@astrojs/sitemap';
+// import node from '@astrojs/node'; // ← SSR aquí
+//
+// const sitemapI18n = {
+//   defaultLocale: 'es',
+//   locales: {
+//     es: 'es-ES',
+//     en: 'en-US',
+//     pt: 'pt-PT',
+//     it: 'it-IT',
+//   }
+// };
+//
+// export default defineConfig({
+//   site: 'https://gortazar-legaltech.github.io/legal/',
+//   base: '/',
+//   outDir: './dist',
+//   trailingSlash: 'always',
+//   integrations: [
+//     sitemap({
+//       changefreq: 'weekly',
+//       priority: 0.8,
+//       // Este es el que usa Astro internamente (como array)
+//       i18n: {
+//            defaultLocale: 'es',
+//            locales: {
+//              es: 'es-ES',
+//              en: 'en-US',
+//              pt: 'pt-PT',
+//              it: 'it-IT',
+//            },
+//          },
+//     filter: (page) => !page.includes('/404'),
+//     customPages: [
+//       '/es', '/en', '/pt', '/it',
+//       '/es/contacto', '/en/contacto', '/pt/contacto', '/it/contacto',
+//       '/es/nosotros', '/en/nosotros', '/pt/nosotros', '/it/nosotros',
+//       '/es/privacidad', '/en/privacidad', '/pt/privacidad', '/it/privacidad',
+//       '/es/servicios', '/en/servicios', '/pt/servicios', '/it/servicios',
+//     ],
+//   ],
+// });
+
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const baseUrl = 'https://gortazar-legaltech.github.io/';
+
+function generateCustomPages() {
+  const locales = ['es', 'en', 'pt', 'it'];
+  const pages = [];
+
+  for (const locale of locales) {
+    const dir = `./src/pages/${locale}`;
+    if (fs.existsSync(dir)) {
+      const files = fs.readdirSync(dir);
+      files.forEach((file) => {
+        if (file.endsWith('.astro') || file.endsWith('.md')) {
+          const page = file.replace('.astro', '').replace('.md', '');
+          const url = page === 'index' ? `/${locale}/` : `/${locale}/${page}/`;
+          pages.push(`${baseUrl}${url}`);
+        }
+      });
+    }
+  }
+
+  return pages;
+}
 
 export default defineConfig({
-  // URL base de tu sitio, esencial para generar URLs absolutas y sitemaps precisos
-  site: 'https://gortazar-legaltech.github.io/',
-
-  // Subdirectorio desde el cual se servirá el sitio
-  base: '/legal/',
-
-  // Controla la presencia de la barra inclinada al final de las URLs
-  trailingSlash: 'never', // Opciones: 'always', 'never', 'ignore'
-
-  // Directorio de salida para los archivos generados durante la compilación
+  site: baseUrl,
+  base: '/',
+  trailingSlash: 'always',
   outDir: './dist',
-
-  // Directorio para activos estáticos
-  publicDir: './public',
-
-  // Integraciones adicionales
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/exclude-this-page'), // Excluye páginas específicas del sitemap
-      customPages: [
-        'https://gortazar-legaltech.github.io/legal/es',
-      ], // Añade páginas personalizadas al sitemap
-      changefreq: 'weekly', // Frecuencia de cambio de las páginas
-      priority: 0.8, // Prioridad de las páginas
       i18n: {
-        defaultLocale: '/es',
+        defaultLocale: 'es',
         locales: {
           es: 'es-ES',
           en: 'en-US',
           pt: 'pt-PT',
           it: 'it-IT',
-        },
-      }, // Configuración de internacionalización para el sitemap
+        }
+      },
+      customPages: generateCustomPages(),
+      sitemap: `${baseUrl}/sitemap-index.xml`,
+      filter: (page) => !page.includes('404'),
     }),
   ],
-
-  // Configuración de internacionalización
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en', 'pt', 'it'],
     routing: {
-      prefixDefaultLocale: false, // No añade prefijo al idioma por defecto
-      redirectToDefaultLocale: true, // Redirige a la versión en el idioma por defecto si no se especifica idioma
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: true,
     },
     fallback: {
-      pt: 'es', // Si no se encuentra una página en portugués, muestra la versión en español
-      it: 'en', // Si no se encuentra una página en italiano, muestra la versión en inglés
-    },
-  },
-
-  // Configuración de construcción
-  build: {
-    assets: '_astro', // Directorio para activos generados por Astro
-    format: 'directory', // Formato de salida de las páginas
-  },
+      pt: 'es',
+      it: 'en',
+    }
+  }
 });

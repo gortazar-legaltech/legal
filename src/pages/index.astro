@@ -1,5 +1,42 @@
+# ---
+# export const prerender = true;
+# ---
+#
+# <html lang="es">
+#   <head>
+#     <meta http-equiv="refresh" content="0; url=${import.meta.env.BASE_URL}es/" />
+#     <meta charset="UTF-8" />
+#     <title>Redirigiendo a /es/</title>
+#     <script>
+#       // Fallback JS por si el meta no funciona
+#       window.location.href = `${import.meta.env.BASE_URL}es/`;
+#     </script>
+#   </head>
+#   <body>
+#     <p>Redirigiendo a la página principal en español...</p>
+#   </body>
+# </html>
+
 ---
-export function get() {
-  return Astro.redirect('/legal/es');
+import { redirect } from 'astro/runtime/server'; // SSR redirection
+
+export const prerender = true;
+export async function get({ redirect }) {
+  return redirect(`${import.meta.env.BASE_URL}es/`, 307); // Temporary redirect
 }
 ---
+
+<!-- SSR fallback -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=${import.meta.env.BASE_URL}es/" />
+    <title>Redirigiendo...</title>
+    <script>
+      window.location.href = `${import.meta.env.BASE_URL}es/`;
+    </script>
+  </head>
+  <body>
+    <p>Redirigiendo a /es/...</p>
+  </body>
+</html>
