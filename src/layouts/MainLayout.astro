@@ -1,15 +1,32 @@
 ---
+import '../styles/global.css';
 export interface Props {
   title?: string;
+  description?: string;
 }
-const { title = 'GORTÁZAR Legal Advisors' } = Astro.props;
+const {
+  title = 'GORTÁZAR Legal Advisors',
+  description = 'Bufete jurídico innovador con enfoque LegalTech. Expertos en derecho corporativo, ciberseguridad y nuevas tecnologías.'
+} = Astro.props;
+
+const lang = Astro.params.lang ?? 'es';
 ---
+
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="GORTÁZAR Legal Advisors" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${import.meta.env.BASE_URL}assets/logo.png`} />
+    <meta property="og:url" content={Astro.url.href} />
+    <link rel="canonical" href={Astro.url.href} />
     <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/global.css`} />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}assets/favicon.svg`} />
   </head>
@@ -18,19 +35,22 @@ const { title = 'GORTÁZAR Legal Advisors' } = Astro.props;
       <nav class="flex justify-between items-center">
         <img src={`${import.meta.env.BASE_URL}assets/logo.png`} alt="Logo GORTÁZAR" class="h-10" />
         <ul class="flex gap-4">
-          <li><a href={`${import.meta.env.BASE_URL}es/`}>Inicio</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}es/nosotros`}>Nosotros</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}es/servicios`}>Servicios</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}es/contacto`}>Contacto</a></li>
+          <li><a href={`/${lang}/`}>Inicio</a></li>
+          <li><a href={`/${lang}/nosotros`}>Nosotros</a></li>
+          <li><a href={`/${lang}/servicios`}>Servicios</a></li>
+          <li><a href={`/${lang}/contacto`}>Contacto</a></li>
         </ul>
       </nav>
     </header>
+
     <main class="p-6">
       <slot />
     </main>
+
     <footer class="p-4 bg-atlante-oscuro text-white text-sm text-center">
       <p>© {new Date().getFullYear()} GORTÁZAR Legal Advisors</p>
-      <a href={`${import.meta.env.BASE_URL}es/privacidad`} class="underline">Política de Privacidad</a>
+      <a href={`/${lang}/privacidad`} class="underline">Política de Privacidad</a>
     </footer>
   </body>
 </html>
+---

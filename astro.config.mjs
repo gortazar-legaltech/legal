@@ -1,3 +1,107 @@
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'url';
+
+// Función para generar páginas personalizadas a partir de "src/pages"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const baseUrl = 'https://gortazar-legaltech.github.io';
+
+// Función para generar páginas personalizadas a partir de "src/pages"
+function generateCustomPages() {
+  const locales = ['es', 'en', 'pt', 'it'];
+  const pages = [];
+
+  locales.forEach((locale) => {
+    // Construye la ruta absoluta a la carpeta de cada idioma
+    const localeDir = path.join(__dirname, 'src', 'pages', locale);
+    if (fs.existsSync(localeDir)) {
+      // Función recursiva para recorrer la carpeta
+      const traverseDir = (dir, relativePath = '') => {
+        const items = fs.readdirSync(dir);
+        items.forEach((item) => {
+          const fullPath = path.join(dir, item);
+          const stat = fs.statSync(fullPath);
+          if (stat.isDirectory()) {
+            traverseDir(fullPath, path.join(relativePath, item));
+          } else if (item.endsWith('.astro') || item.endsWith('.md')) {
+            // Remueve la extensión (.astro o .md)
+            const pageName = item.replace(/\.astro$|\.md$/, '');
+            // Construye la URL en función de si es "index" u otro archivo
+            let url;
+            if (pageName === 'index') {
+              url = relativePath ? `/${locale}/${relativePath}/` : `/${locale}/`;
+            } else {
+              url = relativePath ? `/${locale}/${relativePath}/${pageName}/` : `/${locale}/${pageName}/`;
+            }
+            // Asegura que se usen barras "/" incluso en Windows
+            url = url.replace(/\\/g, '/');
+            pages.push(`${baseUrl}${url}`);
+          }
+        });
+      };
+
+      traverseDir(localeDir);
+    }
+  });
+
+  return pages;
+}
+
+
+
+
+
+export default defineConfig({
+  site: baseUrl,
+  base: '/',
+  trailingSlash: 'always',
+  outDir: './dist',
+  vite: {
+    optimizeDeps: {
+      // Evita que Vite intente preoptimizar "astro/server"
+      exclude: ['astro/server']
+    },
+    ssr: {
+      // Marca "astro/server" como externo para la compilación SSR
+      external: ['astro/server']
+    },
+    resolve: {
+      alias: {
+        // Redirige "astro/server" a "astro/runtime/server"
+        'astro/server': 'astro/runtime/server'
+      }
+    }
+  },
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-ES',
+          en: 'en-US',
+          pt: 'pt-PT',
+          it: 'it-IT'
+        },
+        routes: {
+          es: '/es/',
+          en: '/en/',
+          pt: '/pt/',
+          it: '/it/'
+        }
+      },
+      customPages: generateCustomPages(),
+      filter: (page) => !page.includes('404')
+    })
+  ]
+});
+
+
+
+
 // import { defineConfig } from 'astro/config';
 // import sitemap from '@astrojs/sitemap';
 // import node from '@astrojs/node'; // ← SSR aquí
@@ -41,66 +145,3 @@
 //     ],
 //   ],
 // });
-
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import fs from 'node:fs';
-import path from 'node:path';
-
-const baseUrl = 'https://gortazar-legaltech.github.io/';
-
-function generateCustomPages() {
-  const locales = ['es', 'en', 'pt', 'it'];
-  const pages = [];
-
-  for (const locale of locales) {
-    const dir = `./src/pages/${locale}`;
-    if (fs.existsSync(dir)) {
-      const files = fs.readdirSync(dir);
-      files.forEach((file) => {
-        if (file.endsWith('.astro') || file.endsWith('.md')) {
-          const page = file.replace('.astro', '').replace('.md', '');
-          const url = page === 'index' ? `/${locale}/` : `/${locale}/${page}/`;
-          pages.push(`${baseUrl}${url}`);
-        }
-      });
-    }
-  }
-
-  return pages;
-}
-
-export default defineConfig({
-  site: baseUrl,
-  base: '/',
-  trailingSlash: 'always',
-  outDir: './dist',
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: 'es',
-        locales: {
-          es: 'es-ES',
-          en: 'en-US',
-          pt: 'pt-PT',
-          it: 'it-IT',
-        }
-      },
-      customPages: generateCustomPages(),
-      sitemap: `${baseUrl}/sitemap-index.xml`,
-      filter: (page) => !page.includes('404'),
-    }),
-  ],
-  i18n: {
-    defaultLocale: 'es',
-    locales: ['es', 'en', 'pt', 'it'],
-    routing: {
-      prefixDefaultLocale: false,
-      redirectToDefaultLocale: true,
-    },
-    fallback: {
-      pt: 'es',
-      it: 'en',
-    }
-  }
-});
