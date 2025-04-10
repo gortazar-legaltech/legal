@@ -87,10 +87,10 @@ export default defineConfig({
           it: 'it-IT'
         },
         routes: {
-          es: '/es',
-          en: '/en',
-          pt: '/pt',
-          it: '/it'
+          es: '/es/',
+          en: '/en/',
+          pt: '/pt/',
+          it: '/it/'
         }
       },
       customPages: generateCustomPages(),

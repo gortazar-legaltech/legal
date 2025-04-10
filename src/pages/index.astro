@@ -1,21 +1,7 @@
----
 export const prerender = true;
-export async function get() {
-  return Astro.redirect(`${import.meta.env.BASE_URL}es/`, 307);
-}
----
 
-<!-- SSR fallback -->
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=${import.meta.env.BASE_URL}es/" />
-    <title>Redirigiendo...</title>
-    <script>
-      window.location.href = `${import.meta.env.BASE_URL}es/`;
-    </script>
-  </head>
-  <body>
-    <p>Redirigiendo a /es/...</p>
-  </body>
-</html>
+export async function get({ redirect, url }) {
+  if (url.pathname === "/") {
+    return redirect(`${import.meta.env.BASE_URL}es/`, 307);
+  }
+}

@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+import Layout from '../../layouts/Layout.astro';
+const { title = 'GORTÁZAR LEGAL ADVISORS' } = Astro.props;
+---
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/global.css`} />
+  </head>
+  <body class="m-0 font-sans">
+    <header class="p-4 bg-atlante-oscuro text-white">
+      <h1 class="text-xl">GORTÁZAR LEGAL ADVISORS</h1>
+    </header>
+    <main class="p-4">
+      <slot />
+    </main>
+    <footer class="p-4 bg-atlante-oscuro text-white text-sm">
+      <p>© {new Date().getFullYear()} GORTÁZAR LEGAL ADVISORS. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>

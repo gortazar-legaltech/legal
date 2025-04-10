@@ -1,13 +1,21 @@
 ---
 import '../styles/global.css';
-import Layout from '../../layouts/Layout.astro';
-const { title = 'GORTÁZAR LEGAL ADVISORS' } = Astro.props;
+const { title = 'GORTÁZAR LEGAL ADVISORS', description = 'Bufete jurídico innovador con enfoque LegalTech, especializado en derecho corporativo, ciberseguridad y tecnología.' } = Astro.props;
 ---
 <html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="GORTÁZAR Legal Advisors" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${import.meta.env.BASE_URL}assets/logo.png`} />
+    <meta property="og:url" content={Astro.url.href} />
+    <link rel="canonical" href={Astro.url.href} />
     <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/global.css`} />
   </head>
   <body class="m-0 font-sans">
